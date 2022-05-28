@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "9acd6914-ca0f-411d-b7d0-8c6f472246ca",
-		"name": "NODEJSIUD",
+		"_postman_id": "e97202ff-84ab-4aac-93a8-4d18bf245862",
+		"name": "NODEJSIUD_MISEGUIMIENTO",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -9,32 +9,13 @@
 			"name": "USUARIOS",
 			"item": [
 				{
-					"name": "ObtenerUsuarios",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:5000/api/usuarios",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"usuarios"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CrearUsuario",
+					"name": "createUsuario",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Julio Martinez\",\r\n    \"email\": \"julio@gmail.com\",\r\n    \"estado\": true\r\n}",
+							"raw": "\r\n{\r\n    \"nombre\":\"Luz Tamayo\",\r\n    \"email\":\"mary.tamayo@gmail.com\",\r\n    \"estado\":true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -54,6 +35,94 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getUsuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsuarioById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/usuarios/628a386bccff1d10a71ac957",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"628a386bccff1d10a71ac957"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUsuarioById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombre\": \"Antonio Agudelo\",\r\n        \"email\": \"antonio.agudelo@gmail.com\",\r\n        \"fechaCreacion\": \"2022-05-22T04:56:44.500Z\",\r\n        \"estado\": true        \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/usuarios/628a4865129eecaa184b82ef",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"628a4865129eecaa184b82ef"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUsuarioById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/usuarios/628a48d5129eecaa184b82f5",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"628a48d5129eecaa184b82f5"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -61,7 +130,55 @@
 			"name": "TIPOSEQUIPOS",
 			"item": [
 				{
-					"name": "GetTiposEquiposUsuarioActivos",
+					"name": "createTipoEquipo-videograbadoras-mary.tamayo@gmail.com",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"VIDEOGRABADORAS\",\r\n    \"estado\":true,\r\n    \"usuario\":{\r\n        \"email\":\"mary.tamayo@gmail.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/tiposequipo",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tiposequipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTiposEquipoUsuarioTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/tiposequipo/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tiposequipo",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTiposEquipoUserActivo",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -81,20 +198,12 @@
 					"response": []
 				},
 				{
-					"name": "CrearTipoEquipo",
-					"request": {
-						"method": "POST",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GetTipoEquipoByID",
+					"name": "getTiposEquipoById",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/tiposequipo/62845d4995574c875e053cdd",
+							"raw": "localhost:5000/api/tiposequipo/628a5342289b3195585fa998",
 							"host": [
 								"localhost"
 							],
@@ -102,20 +211,20 @@
 							"path": [
 								"api",
 								"tiposequipo",
-								"62845d4995574c875e053cdd"
+								"628a5342289b3195585fa998"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "ActualizaTipoEquipoByID",
+					"name": "updateTipoEquipoById",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"móviles\",\r\n    \"estado\": true,\r\n    \"usuario\": {\r\n        \"email\": \"julio@gmail.com\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"nombre\":\"ELECTRODOMESTICOS\",\r\n    \"estado\":true,\r\n    \"usuario\":{\r\n        \"email\":\"antonio.agudelo@gmail.com\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -123,7 +232,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/api/tiposequipo/62845d4995574c875e053cdd",
+							"raw": "localhost:5000/api/tiposequipo/628a5342289b3195585fa998",
 							"host": [
 								"localhost"
 							],
@@ -131,17 +240,625 @@
 							"path": [
 								"api",
 								"tiposequipo",
-								"62845d4995574c875e053cdd"
+								"628a5342289b3195585fa998"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "BorrarTipoEquipoByID",
+					"name": "deleteTipoEquipoByID-videograbadoras-mary.tamayo@gmail.com-recordar-cambiar(_id)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/tiposequipo/628ed454236c8e0ff02fc294",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tiposequipo",
+								"628ed454236c8e0ff02fc294"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ESTADOSEQUIPOS",
+			"item": [
+				{
+					"name": "createEstado-almacen",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"depreciado\",\r\n    \"estado\": true   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/estados",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEstados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/estados",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEstadoById-almacen",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:5000/api/estados/62922cd76a0ac79b69bae36c",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"estados",
+								"62922cd76a0ac79b69bae36c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEstadoById-almacen",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"ALMACEN MODIF\",\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/estados/62922cd76a0ac79b69bae36c",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"estados",
+								"62922cd76a0ac79b69bae36c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEstadoById-almacen",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/estados/629113d81f7bdf8ca8d81036(estoparanoborrarlo)",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"estados",
+								"629113d81f7bdf8ca8d81036(estoparanoborrarlo)"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MARCAS",
+			"item": [
+				{
+					"name": "createMarcas-Apple",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Apple\",\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/marcas",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"marcas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMarcas",
 					"request": {
 						"method": "GET",
 						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getMarcaById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/marcas/6291157c3ca62e72a973645d",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"marcas",
+								"6291157c3ca62e72a973645d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMarca-Apple",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/marcas/629115703ca62e72a973645a",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"marcas",
+								"629115703ca62e72a973645a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMarcaById-Apple",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/marcas/629119bc69cd8e5669a6b5ea(noborrar)",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"marcas",
+								"629119bc69cd8e5669a6b5ea(noborrar)"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "INVENTARIO",
+			"item": [
+				{
+					"name": "createInventario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1403\",\r\n    \"modelo\": \"Modelo dy2052la\",\r\n    \"descripcion\": \"Portátil HP 15\",\r\n    \"foto\": \"\",\r\n    \"color\": \"Negro\",\r\n    \"precio\": 2100000,\r\n    \"usuario\": \"6289c28db894d090f78cba73\",\r\n    \"marca\": \"629115833ca62e72a9736460\",\r\n    \"estado\": \"629109a4a6e19a117952292c\",\r\n    \"tipoEquipo\": \"6289c28db894d090f78cba73\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createInventarioMarcaInexistente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1403-b\",\r\n    \"modelo\": \"Modelo dy2052la-b\",\r\n    \"descripcion\": \"Portátil HP 15b\",\r\n    \"foto\": \"\",\r\n    \"color\": \"Negro-b\",\r\n    \"precio\": 2200000,\r\n    \"usuario\": \"6289c28db894d090f78cba73\",\r\n    \"marca\": \"629115833ca62e72a973646b\",\r\n    \"estado\": \"629109a4a6e19a117952292c\",\r\n    \"tipoEquipo\": \"6289c28db894d090f78cba73\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createInventarioEstadoInexistente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1403-b\",\r\n    \"modelo\": \"Modelo dy2052la-b\",\r\n    \"descripcion\": \"Portátil HP 15b\",\r\n    \"foto\": \"\",\r\n    \"color\": \"Negro-b\",\r\n    \"precio\": 2200000,\r\n    \"usuario\": \"6289c28db894d090f78cba73\",\r\n    \"marca\": \"629115833ca62e72a9736460\",\r\n    \"estado\": \"629109a4a6e19a117952292b\",\r\n    \"tipoEquipo\": \"6289c28db894d090f78cba73\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createInventarioTipoEquipoInexistente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1403-b\",\r\n    \"modelo\": \"Modelo dy2052la-b\",\r\n    \"descripcion\": \"Portátil HP 15b\",\r\n    \"foto\": \"\",\r\n    \"color\": \"Negro-b\",\r\n    \"precio\": 2200000,\r\n    \"usuario\": \"6289c28db894d090f78cba73\",\r\n    \"marca\": \"629115833ca62e72a9736460\",\r\n    \"estado\": \"629109a4a6e19a117952292c\",\r\n    \"tipoEquipo\": \"6289c28db894d090f78cba7b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadImage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/E:/IUDigital/semestre5/06-Ingenieria Web II/videoconferencias     -anuncios(material)/20220521-images/Portatil-HP-15.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/6291224769cd8e5669a6b5f6/upload-image",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								"6291224769cd8e5669a6b5f6",
+								"upload-image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getInventarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/inventarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getInventarioByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/inventarios/6291224769cd8e5669a6b5f6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								"6291224769cd8e5669a6b5f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInventarioById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1404\",\r\n    \"modelo\": \"Modelo dy2052la\",\r\n    \"descripcion\": \"Portátil HP 15\",\r\n    \"color\": \"Azul\",\r\n    \"precio\": 2200000,    \r\n    \"usuario\": \"6289c28db894d090f78cba73\",\r\n    \"marca\": \"629115833ca62e72a9736460\",\r\n    \"estado\": \"629109a4a6e19a117952292c\",\r\n    \"tipoEquipo\": \"628a4f81289b3195585fa98c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/6291224769cd8e5669a6b5f6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								"6291224769cd8e5669a6b5f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInventarioById-UsuarioInexistente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1404\",\r\n    \"modelo\": \"Modelo dy2052la\",\r\n    \"descripcion\": \"Portátil HP 15\",\r\n    \"color\": \"Azul\",\r\n    \"precio\": 2300000,    \r\n    \"usuario\": \"6289c28db894d090f78cba7b\",\r\n    \"marca\": \"629115833ca62e72a9736460\",\r\n    \"estado\": \"629109a4a6e19a117952292c\",\r\n    \"tipoEquipo\": \"6289c28db894d090f78cba73\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/6291224769cd8e5669a6b5f6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								"6291224769cd8e5669a6b5f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInventarioById-MarcaInexistente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1404\",\r\n    \"modelo\": \"Modelo dy2052la\",\r\n    \"descripcion\": \"Portátil HP 15\",\r\n    \"color\": \"Azul\",\r\n    \"precio\": 2300000,    \r\n    \"usuario\": \"6289c28db894d090f78cba73\",\r\n    \"marca\": \"629115833ca62e72a973646b\",\r\n    \"estado\": \"629109a4a6e19a117952292c\",\r\n    \"tipoEquipo\": \"628a4f81289b3195585fa98c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/6291224769cd8e5669a6b5f6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								"6291224769cd8e5669a6b5f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInventarioById-EstadoInexistente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1404\",\r\n    \"modelo\": \"Modelo dy2052la\",\r\n    \"descripcion\": \"Portátil HP 15\",\r\n    \"color\": \"Azul\",\r\n    \"precio\": 2300000,    \r\n    \"usuario\": \"6289c28db894d090f78cba73\",\r\n    \"marca\": \"629115833ca62e72a9736460\",\r\n    \"estado\": \"629109a4a6e19a117952292b\",\r\n    \"tipoEquipo\": \"628a4f81289b3195585fa98c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/6291224769cd8e5669a6b5f6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								"6291224769cd8e5669a6b5f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInventarioById-EstadoInexistente Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"1201-1302-1404\",\r\n    \"modelo\": \"Modelo dy2052la\",\r\n    \"descripcion\": \"Portátil HP 15\",\r\n    \"color\": \"Azul\",\r\n    \"precio\": 2300000,    \r\n    \"usuario\": \"6289c28db894d090f78cba73\",\r\n    \"marca\": \"629115833ca62e72a9736460\",\r\n    \"estado\": \"629109a4a6e19a117952292c\",\r\n    \"tipoEquipo\": \"628a4f81289b3195585fa98b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/inventarios/6291224769cd8e5669a6b5f6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								"6291224769cd8e5669a6b5f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFotoById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/inventarios/6291224769cd8e5669a6b5f6/image",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"inventarios",
+								"6291224769cd8e5669a6b5f6",
+								"image"
+							]
+						}
 					},
 					"response": []
 				}
