@@ -2,6 +2,9 @@
 const { request, response } = require('express');
 const Inventario = require('../models/inventario');
 const Usuario = require('../models/usuario');
+const Marca = require('../models/marca');
+const Estado = require('../models/estado');
+const TipoEquipo = require('../models/tipoEquipo');
 
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
@@ -34,6 +37,32 @@ const fs = require('fs');
             })
         }
         // TAREA: Validar que marca, estado y tipo existan y estén activos
+        const marcaBD = await Marca.findOne({
+            _id: marca, estado: true
+        })
+        if(!marcaBD){
+            return res.status(400).json({
+                msj: 'No existe marca'
+            })
+        }
+
+        const estadoBD = await Estado.findOne({
+            _id: estado, estado: true
+        })
+        if(!estadoBD){
+            return res.status(400).json({
+                msj: 'No existe estado'
+            })
+        }
+
+        const tipoEquipoBD = await TipoEquipo.findOne({
+            _id: tipoEquipo, estado: true
+        })
+        if(!tipoEquipoBD){
+            return res.status(400).json({
+                msj: 'No existe tipo de equipo'
+            })
+        }
 
         const data = req.body;
 
@@ -84,15 +113,58 @@ const getInventarios = async (req, res = response) => {
 const updateInventario = async (req = request, res = response) => {
     try{
         const { id } = req.params;
-        const data = req.body;// destructuring, spread (...)        
+
+         //Puede mejorarse  con validacion de serial y modelo
+        const { usuario, marca, estado, tipoEquipo } = req.body;
+
+        const data = req.body;// destructuring, spread (...)   
         console.log(data);
         const inventarioBD = await Inventario.findOne({ _id: id});
-        /**  TODO: VALIDAR QUE EXISTEN Y ESTAN ACTIVOS: ESTADO, USUARIO, MARCA, ...  **/
-       if(!inventarioBD){
-        return res.status(400).json({
-            msj: 'No existe este inventario'
-        });
-       } 
+        /**  TODO: VALIDAR QUE EXISTEN Y ESTAN ACTIVOS:  USUARIO, MARCA, ESTADO, TIPOEQUIPO ...  **/
+        if(!inventarioBD){
+            return res.status(400).json({
+                msj: 'No existe este inventario'
+            });
+        } 
+
+
+        const usuarioBD = await Usuario.findOne({
+            _id: usuario, estado: true
+        })
+        if(!usuarioBD){
+            return res.status(400).json({
+                msj: 'No existe usuario'
+            })
+        }
+        
+        const marcaBD = await Marca.findOne({
+            _id: marca, estado: true
+        })
+        if(!marcaBD){
+            return res.status(400).json({
+                msj: 'No existe marca'
+            })
+        }
+
+        const estadoBD = await Estado.findOne({
+            _id: estado, estado: true
+        })
+        if(!estadoBD){
+            return res.status(400).json({
+                msj: 'No existe estado'
+            })
+        }
+
+        const tipoEquipoBD = await TipoEquipo.findOne({
+            _id: tipoEquipo, estado: true
+        })
+        if(!tipoEquipoBD){
+            return res.status(400).json({
+                msj: 'No existe tipo de equipo'
+            })
+        }
+
+
         const inventario = await Inventario.findByIdAndUpdate(id, data, {new : true});
         res.status(201).json(inventario);
     }catch(e){
