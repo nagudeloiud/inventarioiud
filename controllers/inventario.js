@@ -92,14 +92,15 @@ const getInventarios = async (req, res = response) => {
             path: 'marca',
             match: { estado: true }
         })
-        /*.populate({
-            path: 'estado'
-        })*/
+        .populate({
+            path: 'estado',
+            match: { estado: true }
+        })
         .populate({
             path: 'tipoEquipo',
             match: { estado: true }
         });        
-        res.json(inventariosBD);
+        res.json(inventariosBD);   
     }catch(e){
         return res.status(500).json({
             error: e

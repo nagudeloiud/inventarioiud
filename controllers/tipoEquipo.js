@@ -31,7 +31,10 @@ const Usuario = require('../models/usuario');
  */
  const getTiposEquipo = async (req, res = response) => {
     const query = {};    
-    const tiposEquipoBD = await TipoEquipo.find(query);
+    const tiposEquipoBD = await TipoEquipo.find(query).populate({
+        path: 'usuario',
+        match: { estado: true }
+    });;
     res.json(tiposEquipoBD);
 }
 
