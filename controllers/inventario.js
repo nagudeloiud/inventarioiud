@@ -16,7 +16,11 @@ const fs = require('fs');
  */
  const createInventario = async (req = request, res = response) => {
     try{
-        const { serial, modelo, usuario, marca, estado, tipoEquipo } = req.body;
+        const { serial, modelo, usuario, marca, estado, tipoEquipo,
+                descripcion,
+                foto,
+                color,
+                precio } = req.body;
 
         const inventarioBD = await Inventario.findOne({
             $or: [
@@ -64,7 +68,20 @@ const fs = require('fs');
             })
         }
 
-        const data = req.body;
+         const data = {
+            serial,
+            modelo,
+            descripcion,
+            foto,
+            color,
+            precio,
+            usuario,
+            marca,
+            estado,
+            tipoEquipo
+          }; 
+
+        //const data = req.body;
 
         const inventario = new Inventario(data);
         await inventario.save();
